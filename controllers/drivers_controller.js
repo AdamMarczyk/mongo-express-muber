@@ -11,7 +11,9 @@ module.exports = {
     Driver.geoNear(
       { type: 'Point', coordinates: [lng, lat] },
       { spherical: true, maxDistance: 200000 }
-    );
+    )
+      .then(drivers => res.send(drivers))
+      .catch(next);
   },
 
   create(req, res, next) {
