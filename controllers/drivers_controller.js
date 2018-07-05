@@ -3,5 +3,7 @@ module.exports = {
     res.send({ hi: 'there' });
   },
 
-  create(req, res) {}
+  create(req, res) {
+    res.send({ hi: 'there' });
+  }
 };
