@@ -20,7 +20,7 @@ describe('Drivers controller', () => {
     });
   });
 
-  it('PUT to /api.drivers/id edits an existing driver', done => {
+  it('PUT to /api/drivers/id edits an existing driver', done => {
     const driver = new Driver({ email: 't@t.com', driving: false });
 
     driver.save().then(() => {
@@ -30,6 +30,21 @@ describe('Drivers controller', () => {
         .end(() => {
           Driver.findOne({ email: 't@t.com' }).then(driver => {
             assert(driver.driving === true);
+            done();
+          });
+        });
+    });
+  });
+
+  it('DELETE to /api/drivers/id deletes a driver', done => {
+    const driver = new Driver({ email: 'test@test.com ' });
+
+    driver.save().then(() => {
+      request(app)
+        .delete(`/api/drivers/${driver._id}`)
+        .end(() => {
+          Driver.findOne({ email: 'test@test.com' }).then(driver => {
+            assert(driver === {});
             done();
           });
         });
