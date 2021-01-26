@@ -15,6 +15,6 @@
     "mocha": "^5.2.0",
     "mongoose": "^5.2.12",
     "nodemon": "^1.17.5",
-    "supertest": "^3.1.0"
+    "supertest": "^6.1.3"
   }
 }
